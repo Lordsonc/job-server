@@ -54,7 +54,8 @@ export default function Register() {
   return (
     <Wrapper className='full-page'>
       <form className='form' onSubmit={onSubmit} action="">
-        <Logo />
+       <img src={Logo} alt="" />
+        <Logo sty  />
         <h3>{values.isMember ? "Log In" : "Register"}</h3>
         {showAlert && <Alert />}
 

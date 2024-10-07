@@ -33,6 +33,9 @@ import mongoSanitize from 'express-mongo-sanitize';
 // Cookie Parser
 import cookieParser from 'cookie-parser';
 
+// Enable trust proxy for reverse proxies (e.g., Nginx, Heroku)
+app.set('trust proxy', 1); // Trust the first proxy
+
 // Use morgan logger only in development environment
 if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'));
