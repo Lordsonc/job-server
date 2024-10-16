@@ -58,10 +58,14 @@ app.use(cookieParser());
 app.use(helmet());
 app.use(mongoSanitize());
 
-// Applying CORS middleware
+const allowedOrigins = [
+    'http://localhost:3000', // Allow local development
+    'https://job-client1.onrender.com', // Allow deployed version
+];
+
 app.use(cors({
-  origin: 'https://job-client1.onrender.com', // Replace with your frontend URL
-  credentials: true, // Allow cookies and credentials from client
+    origin: allowedOrigins,
+    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
 }));
 
 // Basic route to test API
