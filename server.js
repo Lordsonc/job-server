@@ -33,6 +33,9 @@ import mongoSanitize from 'express-mongo-sanitize';
 // Cookie Parser
 import cookieParser from 'cookie-parser';
 
+// CORS package
+import cors from 'cors';
+
 // Enable trust proxy for reverse proxies (e.g., Nginx, Heroku)
 app.set('trust proxy', 1); // Trust the first proxy
 
@@ -54,6 +57,12 @@ app.use(cookieParser());
 // Applying security middleware
 app.use(helmet());
 app.use(mongoSanitize());
+
+// Applying CORS middleware
+app.use(cors({
+  origin: 'https://job-client1.onrender.com', // Replace with your frontend URL
+  credentials: true, // Allow cookies and credentials from client
+}));
 
 // Basic route to test API
 app.get('/api/v1', (req, res) => {
