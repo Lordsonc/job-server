@@ -9,7 +9,7 @@ import {
   logout,
 } from '../controllers/authController.js';
 
-import authenticateUser from '../middleware/authenticate.js';
+import authenticate from '../middleware/authenticate.js';
 
 import rateLimiter from 'express-rate-limit';
 
@@ -26,7 +26,7 @@ router.route('/register').post(apiLimiter, register);
 router.route('/login').post(apiLimiter, login);
 router.get('/logout', logout);
 
-router.route('/updateUser').patch(authenticateUser, updateUser);
-router.route('/getCurrentUser').get(authenticateUser, getCurrentUser);
+router.route('/updateUser').patch(authenticate, updateUser);
+router.route('/getCurrentUser').get(authenticate, getCurrentUser);
 
 export default router
